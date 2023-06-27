@@ -1,8 +1,7 @@
 IP: 158.160.27.236;
-name_taski: https://veronikaf.gotdns.ch/;
-name_kittygram: https://cats.sytes.net/;
+name_taski: https://veronikaf.gotdns.ch/ ;
+name_kittygram: https://cats.sytes.net/ ;
 login: adminka;
 password: admin_123;
-
 login_cat: adminka_2;
 password_cat: kosmos123;
