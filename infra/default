@@ -1,5 +1,5 @@
+# Taski
 server {
-        
     server_name 158.160.27.236 veronikaf.gotdns.ch;
 
 
@@ -19,13 +19,12 @@ server {
         try_files $uri /index.html;
     }
 
-
-
     listen 443 ssl; # managed by Certbot
     ssl_certificate /etc/letsencrypt/live/veronikaf.gotdns.ch/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/veronikaf.gotdns.ch/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot  
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
 
 server {
     if ($host = veronikaf.gotdns.ch) {
@@ -36,12 +35,10 @@ server {
     listen 80;
     server_name 158.160.27.236 veronikaf.gotdns.ch;
     return 404; # managed by Certbot
-
-
 }
 
 
-
+# Kittygram
 server {
     server_name 158.160.27.236 cats.sytes.net;
 
@@ -54,6 +51,7 @@ server {
     location /admin/ {
         proxy_pass http://127.0.0.1:8080;
     }
+
 
     location /media/ {
         alias /var/www/kittygram/media/;
@@ -72,19 +70,14 @@ server {
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
-}
-
-
 
 server {
     if ($host = cats.sytes.net) {
         return 301 https://$host$request_uri;
     } # managed by Certbot
 	
-	
-	
+
     listen 80;
     server_name 158.160.27.236 cats.sytes.net;
     return 404; # managed by Certbot
-
 }
