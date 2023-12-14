@@ -35,24 +35,43 @@ class Base64ImageField(serializers.ImageField):
             format, imgstr = data.split(';base64,')
             ext = format.split('/')[-1]
 
-            data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
+            data = ContentFile(
+                base64.b64decode(imgstr),
+                name='temp.' + ext
+            )
 
         return super().to_internal_value(data)
 
 
 class CatSerializer(serializers.ModelSerializer):
-    achievements = AchievementSerializer(required=False, many=True)
+    achievements = AchievementSerializer(
+        required=False,
+        any=True
+    )
     color = Hex2NameColor()
     age = serializers.SerializerMethodField()
-    image = Base64ImageField(required=False, allow_null=True)
-    image_url = serializers.SerializerMethodField('get_image_url', read_only=True)
+    image = Base64ImageField(
+        required=False,
+        allow_null=True
+    )
+    image_url = serializers.SerializerMethodField(
+        'get_image_url',
+        read_only=True
+    )
 
     class Meta:
         model = Cat
         fields = (
-            'id', 'name', 'color', 'birth_year', 'achievements', 'owner', 'age',
-            'image', 'image_url'
-            )
+            'id',
+            'name',
+            'color',
+            'birth_year',
+            'achievements',
+            'owner',
+            'age',
+            'image',
+            'image_url'
+        )
         read_only_fields = ('owner',)
 
     def get_image_url(self, obj):
@@ -75,8 +94,9 @@ class CatSerializer(serializers.ModelSerializer):
                     **achievement
                     )
                 AchievementCat.objects.create(
-                    achievement=current_achievement, cat=cat
-                    )
+                    achievement=current_achievement,
+                    cat=cat
+                )
             return cat
     
     def update(self, instance, validated_data):
