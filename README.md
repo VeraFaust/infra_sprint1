@@ -29,5 +29,9 @@ Kittygram — социальная сеть для обмена фотограф
 - Git;
 - DevOps.
 
-Ссылки:
-- Taski: 
+## Ссылки:
+- Taski: https://veronikaf.gotdns.ch/
+- Kittygram: https://cats.sytes.net/
+
+### Автор:
+Фауст Вера
